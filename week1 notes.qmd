@@ -1,0 +1,171 @@
+---
+title: "Week 1 notes"
+author: "Sofia Borges"
+format: html
+---
+https://umgcccfcsr.github.io/CytometryInR/course/01_InstallingRPackages/
+
+### To see which packages are attached an installed, run SessionInfo
+```{r}
+sessionInfo()
+```
+
+### installation of packages only needs to be done once. But attaching from the library needs to be done every time we want to use a package.
+```{r}
+install.packages("dplyr")
+```
+
+### installation needs "", but library (to use the package) does not. For CRAN repository.
+```{r}
+library(dplyr)
+sessionInfo()
+```
+
+### not sure it will work since my computer and R version is older than dplyr##
+```{r}
+?select()
+```
+
+### When I hover over select nothing shows up?? Only in the console. It's supposed to show the packages###
+```{r}
+?ggplot
+```
+
+### Every package needs to be attached/loaded with (library()) before working with it. they then don't need to be deatached to stop working.### 
+### There is a workaround this, using 2 :, such as ?dplyr::select()###
+### How to remove the package (if there are dependencies we don't want to use), such as
+```{r}
+remove.packages("dplyr")
+```
+
+### REPOSITORIES - CRAN, Bioconductor, GitHub. The packages need to be installed from the correct repository.
+### To access bioconductor
+```{r}
+install.packages("BiocManager")
+```
+
+### To install things on BioConductor, use install() instead of install.packages which is from CRAN
+```{r}
+?install()
+```
+```{r}
+library(BiocManager)
+```
+### Example of a package for flow cytometry data QC
+```{r}
+install("PeacoQC")
+```
+```{r}
+library(PeacoQC)
+```
+### Check if it has been attached to the local environment
+```{r}
+sessionInfo()
+```
+
+## Check what packages are installed and not loaded yet
+```{r}
+installed.packages()
+```
+### For installing from GitHub, from someone's repository - many don't have updates and may be abandoned. The intermediate package for GitHub is called remotes.
+```{r}
+install.packages("remotes")
+```
+```{r}
+library(remotes)
+```
+### to install packages it's also different from GitHub install_github
+```{r}
+?install_github
+```
+### installing packages from GitHub, use the GitHub username followed by a "/" and then the name of the package repository
+```{r}
+install_github("hally166/flowSpectrum")
+```
+### TROUBLESHOOTING
+
+### error: dependency is not available # it usually explains what needs to be installed
+### Checking Packages VERSIONS
+### Check package versions with sessionInfo or like this
+```{r}
+packageVersion("PeacoQC")
+```
+### To cite a package in a paper, and see the package version: 
+```{r}
+citation("PeacoQC")
+```
+### Installation of specific versions of packages, specifying the package, version and link of the repository, from CRAN
+```{r}
+remotes::install_version("ggplot2", version = "3.5.2", repos = "https://cloud.r-project.org")
+```
+### Versions of packages from GitHub usually don't follow the same formality in software versions. Or if the developer does not implement releases, the git commit can be provided for example
+```{r}
+remotes::install_github("DavidRach/Luciernaga", ref = "v0.99.7")
+remotes::install_github("DavidRach/Luciernaga", ref = "8d1d694")
+```
+### Documentation and Websites for finding info on packages if they don't have or have few information with the HELP (?) info.### find on website and for github, look for the specific github repository page.###
+Homework
+```{r}
+install.packages("tidyverse")
+```
+```{r}
+install.packages("tidyverse")
+```
+```{r}
+BiocManager::install("flowCore")
+```
+```{r}
+BiocManager::install("flowWorkspace")
+```
+```{r}
+install.packages("stringr")
+```
+```{r}
+install("ggcyto")
+```
+```{r}
+install.packages("tidyr")
+```
+```{r}
+install("openCyto")
+```
+```{r}
+install("FlowSOM")
+```
+```{r}
+install.packages("xml2")
+```
+```{r}
+install.packages("devtools")
+```
+```{r}
+library(devtools)
+install_github('saeyslab/CytoNorm')
+```
+```{r}
+install.packages("lubridate")
+```
+```{r}
+install.packages("httr2")
+```
+```{r}
+BiocManager::install("flowGate")
+```
+```{r}
+install.packages("plotly")
+```
+```{r}
+BiocManager::install(c("flowCore", "Biobase", "sva"))
+remotes::install_github("biosurf/cyCombine")
+```
+```{r}
+BiocManager::install("CytoML")
+```
+```{r}
+install.packages("Rtsne")
+```
+```{r}
+install.packages("uwot")
+```
+
+### Take home problems (3) install other packages using the pak package
